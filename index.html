@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project 2 Report</title>
+    <style>
+      :root {
+        --color-neutral-95: hsl(220 10% 95%);
+        --color-neutral-90: hsl(220 10% 90%);
+        --color-neutral-80: hsl(220 10% 80%);
+        --color-neutral-70: hsl(220 10% 70%);
+        --color-neutral-60: hsl(220 10% 60%);
+        --color-neutral-50: hsl(220 10% 50%);
+        --color-neutral-40: hsl(220 10% 40%);
+        --color-neutral-30: hsl(220 10% 30%);
+        --color-neutral-20: hsl(220 10% 20%);
+        --color-neutral-10: hsl(220 10% 10%);
+      }
+
+      html {
+        font: 100%/1.5 system-ui;
+        counter-reset: figure;
+        background: var(--color-neutral-95);
+        max-width: min(75vw, 80em);
+        margin: 0 auto;
+      }
+
+      /* Headings */
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      h1,
+      h2 {
+        border-bottom: 1px solid var(--color-neutral-80);
+        padding-bottom: 0.2em;
+      }
+
+      h1 {
+        margin-block: 1em 0.5rem;
+        font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+        font-weight: 800;
+
+        small {
+          display: block;
+          width: fit-content;
+          padding: 0.2em 0.5em;
+          margin-inline: auto;
+          color: white;
+          background: var(--color-neutral-40);
+          font-size: 40%;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+      }
+
+      h2 {
+        font-size: 180%;
+        color: var(--color-neutral-30);
+      }
+
+      h3 {
+        font-size: 130%;
+      }
+
+      /* Lists */
+
+      ul,
+      ol {
+        padding-inline-start: 2em;
+      }
+
+      li {
+        &::marker {
+          color: var(--color-neutral-40);
+        }
+
+        + li {
+          margin-top: 0.2em;
+        }
+      }
+
+      /* Sectioning elements */
+
+      header {
+        padding-block: 1em;
+        text-align: center;
+      }
+
+      main {
+        background: white;
+        color: var(--color-neutral-20);
+        border-radius: 1rem;
+        padding: 0.1rem 2rem;
+      }
+
+      /* Figures */
+
+      figure {
+        margin: 1em 0;
+        padding: 0.5rem;
+        margin-inline: -0.5em;
+        border: 1px solid var(--color-neutral-80);
+        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+        text-align: center;
+        background: white;
+
+        > figcaption {
+          font: 500 75% var(--font-sans);
+          background: var(--color-neutral-95);
+          padding: 0.5rem;
+          margin: -0.5rem;
+          margin-top: 0.5rem;
+          counter-increment: figure;
+          text-align: left;
+
+          &::before {
+            content: 'Figure ' counter(figure) ': ';
+            font-weight: bold;
+            color: var(--color-neutral-40);
+          }
+
+          a:not(:hover, :focus, :active) {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: color-mix(
+              in lab,
+              currentColor,
+              transparent 70%
+            );
+          }
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <small>Assignment 4</small>
+        Persuasive or Deceptive Visualization?
+      </h1>
+
+      <p><strong>Ryan Tjenalooi, Matthew Vaught, Jack Kalsched, Leo Malott</strong> </p> <p><em>rtjenalooi@ucsd.edu, mavaught@ucsd.edu, jkalsched@ucsd.edu, lmalott@ucsd.edu</em></p>
+    </header>
+
+    <main>
+      <h2>Proposition: Surface Temperature is rising significantly slower in the United States compared to the next 10 countries in top GDP.</h2>
+
+      <section>
+        <h3>FOR the Proposition</h3>
+
+        <figure>
+          <img src="images/for.png" alt="" />
+          <figcaption>Showing that the US temp changes are significantly slower year by year.</figcaption>
+        </figure>
+
+        <p>Design Decisions and Rationale:</p>
+
+        <ul>
+          <li>The first design decision we decided to make was to add both of the lines into the same plot on the same axes. This allows the reader to more easily compare the two subsets that we are highlighting and removes the potential for axis manipulation which is often easily detected and would kill the credibility of the visualization overall. On a scale of -2 to 2, this decision falls right around a 1 because it is a natural visualization technique to place both on the same plot/axes, however I did also particularly want to do so in this scenario to really emphasize the difference between the two subsets of our data</li>
+          <li>The next design decision we wanted to highlight was the decision to bin the x-axis by 8-year multiples, and then take the minimum value within each binning as our y-axis value. This data manipulation technique is done for both subsets of our data in order to be fair, but we purposely chose such a specific technique because we noticed that it would exaggerate the claim that we wanted to prove. The United States values were far more volatile than the averaged values for the other 10 countries (which intuitively makes sense due to the results of averaging values for 10 countries and comparing them to the raw values from only one country), and this resulted in the lowest values in each 8-year horizon being much lower. On a scale of -2 to 2, this is most certainly a -2 which means that it is extremely deceptive because we are picking a very small subset of data and ignoring the true overall trend.</li>
+          <li>Another design decision that was made along the way was to color code the two subsets, one with a warmer orange/red and the other with a cooler green tone. The green tone was used for the United States to symbolize the “better” surface temperature values and to incentivize the reader to associate this subset with a more positive outlook. Although it could be perceived as deceptive, we feel that it is a natural choice to color-code your data based on the results so this design decision receives a deceptive score of only -1.</li>
+          <li>Additionally, we chose to make the subset for the other 10 countries have a more opaque line and a warmer color while increasing the line width for the United States line to really emphasize the difference between the two. We wanted to bring attention to the trend seen in the United States and this paired well visually with the green encoding for this subset. Ultimately this is a slightly deceptive tactic due to the visual manipulation, but because it does not inherently alter the data it only receives a score of -0.5.</li>
+          <li>The last design decision that we would like to highlight is the inclusion of the annotation during the year of 2008, which is used to show the difference in surface temperature changes between the US and the other 10 countries. Although the value depicted in the plot is accurate to the way that this plot was designed, it is still quite deceptive for two reasons. First of all, it is highlighting the largest that is seen at any point during the entire timespan of the graph, not the discrepancy that we see at the end of the timeline, which would have been a more accurate representation of the real world. Also, and perhaps more importantly, it is quite deceiving because although this line is plotted at the x-value of 2008, the delta is not truly comparing the values from both subsets during the year of 2008. Instead, it is comparing the values that are derived from the process of binning each subset into 8-year bins and taking the minimum value. That means that this comparison could be calculating the difference between the surface temperature in 2001 for one subset and the surface temperature in 2007 for the other. Because of this, we decided to give this design decision a deception score of -2.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>AGAINST the Proposition</h3>
+
+        <figure>
+          <img src="images/against.png" alt="" width="850" height="400"/>
+          <figcaption>US is above average in terms of temp change, as depicted by the bar plot.</figcaption>
+        </figure>
+
+        <p>Design Decisions and Rationale:</p>
+
+        <ul>
+          <li>(Data Manipulation) The original dataset provided the difference in temperature relative to the first recorded year. Instead, I calculated the rate at which the temperature increased each year, then averaged that rate over multiple years. I found that using the average rate of change from 2020–2024 placed the United States 4th out of the 10 countries. This was not true for earlier periods, during which the United States was often among the lowest in average annual change. By setting the range to 2020–2024, I created the impression that the United States had one of the highest average annual temperature increases.</li>
+          <li>(Type of Visualization + Design Choices) To visualize the data, I used a bar graph, which allows viewers to intuitively associate taller bars with greater temperature increases. I sorted the countries by average annual change to make comparisons straightforward. To emphasize the contrast between the United States and other nations, I colored the U.S. bar red and the others gray, two highly contrasting colors that draw attention to the focus country.</li>
+          <li>(Annotations) The biggest challenge I encountered was that Canada’s bar was overwhelmingly taller than those of the other countries. However, it is well known that nations closer to the poles - or farther from the equator - experience greater rates of temperature increase. To account for this, I merged the original dataset with another dataframe containing each country’s distance from the equator. This allowed me to qualify Canada as an outlier, since it is located much farther from the equator than the United States. I highlighted this idea with annotations for both Canada and the U.S. The annotation for Canada notes that countries closer to the poles experience faster warming, while the U.S. annotation provides its distance from the equator. The intent was to discredit Canada’s high rate by contextualizing it as a geographic effect. Without Canada, the U.S. rate appears comparable to that of Italy and Japan, which is visually clear in the graph.</li>
+          <li>(Line Displaying Average) Originally, the average temperature change across all 10 countries was close to that of the United States. Although the U.S. rate was still slightly above average, it wasn’t enough to convincingly show that it was significantly higher. Therefore, I removed Canada - identified as an outlier -from the dataset when computing the average. This adjustment substantially lowered the overall mean and made the United States appear well above average in temperature change.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Final Reflection</h2>
+
+        <p>We landed on our claim because of its opinionated and polarizing nature, leaving room for deceptive visualizations both supporting and opposing it. The data did not easily prove or disprove our claim if we created basic visualizations from the raw data, or when we looked over the data ourselves. But, this left room for creativity. We were able to use deceptive methods such as axis manipulation and visual enhancement in the form of changing colors and opacity to deceive the viewer. Using these methods to deceive the viewer was relatively straightforward. Changing the timeframe of the data shifted the conclusion one could draw from seeing the visualization, but finding more creative ways to alter the data was the difficult part. Rather than using static temperature data, using rates of change between intervals was another way we managed to express the numbers. I think it surprised us how much the message a visualization sends to the viewer can change with the smallest tweak to the code. For example, a change to how many points in a line plot can alter how the viewer sees the data’s volatility. </p>
+        <p>We believe that ethical analysis and visualization can only truly be achieved without data visualization manipulation. After using deceptive techniques, what line exists and where that says that one visualization is ethical but another one isn’t? Some can argue that any type of manipulation meant for good vs. bad, or not involved in politically, economically, or socially charged topics can be deemed ethical or non-ethical. But, we don’t believe a concrete bound or line can be defined that separates an ethical visualization from an unethical one because ethics are not a static thing. Ethics and morals are a person-to-person entity and it will remain that way when it comes to data visualization. The only truly ethical way to visualize and represent data is to rid it from all unnatural manipulation whatsoever. Therefore, we believe that both of our plots are considered unethical and deceptive, despite, because they are on opposite sides of a political spectrum, one of them will favor every individual viewer’s belief more than the other. </p>
+      </section>
+    </main>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"c822b88e119346678db149ed7b7721c9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
